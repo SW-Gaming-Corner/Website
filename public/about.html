@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
     <style>
+      @keyframes easeInFromBottom {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
@@ -18,7 +29,7 @@
         background-color: #3b507d;
         padding: 0.3em 1em;
       }
-      h1 {
+      #Portfolio {
         font-size: xx-large;
         font-weight: bold;
         color: #fcf6ed;
@@ -26,19 +37,10 @@
         background-color: #3b507d;
         border: none;
       }
-      #Home:hover {
+      #About_Me {
         font-size: large;
         background-color: #fcf6ed;
         color: #3b507d;
-        font-weight: bold;
-        border: none;
-        border-radius: 1em;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-      #Home {
-        font-size: large;
-        background-color: #3b507d;
-        color: #fcf6ed;
         font-weight: bold;
         border: none;
         border-radius: 1em;
@@ -88,6 +90,7 @@
         top: 1.3em;
         margin-left: 2em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        animation: easeInFromBottom 0.7s ease-in forwards;
       }
       #Engineer {
         font-size: 1.5em;
@@ -108,13 +111,18 @@
   <body>
     <div>
       <nav class="navbar">
-        <h1>About Me</h1>
+        <input
+          type="button"
+          value="Portfolio"
+          id="Portfolio"
+          onclick="Home()"
+        />
         <div>
           <input
             type="button"
-            value="Home"
-            id="Home"
-            onclick="Home()"
+            value="About"
+            id="About_Me"
+            onclick="AboutMe()"
           />
           <input
             type="button"
@@ -138,16 +146,39 @@
       </div>
     </div>
     <script>
-      function Home(){
+      const about_button = document.getElementById("About_Me");
+      const hobbies_button = document.getElementById("Hobbies");
+      const achievements_button = document.getElementById("Achievements");
+      let hoverTimer;
+
+      hobbies_button.addEventListener("mouseenter", () => {
+        about_button.style.backgroundColor = "#3b507d";
+        about_button.style.color = "#fcf6ed";
+        console.log("Hovered");
+      });
+      hobbies_button.addEventListener("mouseleave", () => {
+        about_button.style.backgroundColor = "#fcf6ed";
+        about_button.style.color = "#3b507d";
+      });
+      achievements_button.addEventListener("mouseenter", () => {
+        about_button.style.backgroundColor = "#3b507d";
+        about_button.style.color = "#fcf6ed";
+        console.log("Hovered");
+      });
+      achievements_button.addEventListener("mouseleave", () => {
+        about_button.style.backgroundColor = "#fcf6ed";
+        about_button.style.color = "#3b507d";
+      });
+      function Home() {
         window.location.href = "/";
       }
-      function AboutMe(){
+      function AboutMe() {
         window.location.href = "/about";
       }
-      function Hobbies(){
+      function Hobbies() {
         window.location.href = "/hobbies";
       }
-      function Achievements(){
+      function Achievements() {
         window.location.href = "/achievement";
       }
     </script>
