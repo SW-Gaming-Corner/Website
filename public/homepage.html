@@ -15,6 +15,20 @@
           transform: translateY(0);
         }
       }
+      @keyframes bounceUp {
+        0% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        70% {
+          transform: translateY(-4px);
+        }
+        100% {
+          transform: translateY(-6px);
+        }
+      }
 
       body {
         margin: 0;
@@ -29,7 +43,7 @@
         background-color: #3b507d;
         padding: 0.3em 1em;
       }
-      #Portfolio{
+      #Portfolio {
         font-size: xx-large;
         font-weight: bold;
         color: #fcf6ed;
@@ -45,6 +59,8 @@
         border: none;
         border-radius: 1em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        animation: bounceUp 0.45s ease forwards;
+        transform: translateY(-6px);
       }
       #About_Me {
         font-size: large;
@@ -54,6 +70,8 @@
         border: none;
         border-radius: 1em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        transition: transform 10s ease;
       }
       #Hobbies:hover {
         font-size: large;
@@ -63,6 +81,8 @@
         border: none;
         border-radius: 1em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        animation: bounceUp 0.45s ease forwards;
+        transform: translateY(-6px);
       }
       #Hobbies {
         font-size: large;
@@ -72,6 +92,8 @@
         border: none;
         border-radius: 1em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        transition: transform 10s ease;
       }
       #Achievements:hover {
         font-size: large;
@@ -81,6 +103,8 @@
         border: none;
         border-radius: 1em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        animation: bounceUp 0.45s ease forwards;
+        transform: translateY(-6px);
       }
       #Achievements {
         font-size: large;
@@ -90,6 +114,8 @@
         border: none;
         border-radius: 1em;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        transition: transform 10s ease;
       }
       .Headline {
         font-size: 5em;
@@ -115,6 +141,16 @@
         background-color: #3b507d;
         color: #fcf6ed;
       }
+      #Subtitle{
+        font-size: 1.3em;
+        font-weight: bold;
+        display: grid;
+        position: relative;
+        top: 3em;
+        margin-left: 7.8em;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.2em;
+      }
     </style>
   </head>
   <body>
@@ -135,15 +171,15 @@
           />
           <input
             type="button"
-            value="Hobbies"
-            id="Hobbies"
-            onclick="Hobbies()"
-          />
-          <input
-            type="button"
             value="Achievements"
             id="Achievements"
             onclick="Achievements()"
+          />
+          <input
+            type="button"
+            value="Hobbies"
+            id="Hobbies"
+            onclick="Hobbies()"
           />
         </div>
       </nav>
@@ -152,11 +188,12 @@
         <span class="Headline">I'm Samuel</span>
         <br /><br /><br />
         <span id="Engineer">Welcome to my Web Page!</span>
+        <span id="Subtitle">This is a personal portfolio website to learn more about me!</span>
       </div>
     </div>
     <script>
       function Home() {
-        if(window.location.href = '/'){
+        if ((window.location.href = "/")) {
           location.reload();
         }
       }
