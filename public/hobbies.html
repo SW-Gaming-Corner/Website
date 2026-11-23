@@ -22,6 +22,8 @@
         margin: 0;
         min-height: 100vh;
         background: linear-gradient(to bottom, #fcf6ed, #fcf6ed);
+        overflow-x: hidden;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
       .navbar {
@@ -29,34 +31,49 @@
         align-items: center;
         justify-content: space-between;
         background-color: #3b507d;
-        padding: 0.3em 1em;
+        padding: 1em 1em;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1em;
       }
 
       #Portfolio {
         font-size: xx-large;
         font-weight: bold;
         color: #fcf6ed;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-color: #3b507d;
         border: none;
         cursor: pointer;
-      }
-      #Hobbies {
-        font-size: large;
-        background-color: #fcf6ed;
-        color: #3b507d;
-        font-weight: bold;
-        border: none;
-        border-radius: 1em;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        cursor: pointer;
         display: inline-block;
-
         transition:
           transform 0.25s ease,
           background-color 0.25s ease,
           color 0.25s ease;
+        will-change: transform;
+      }
 
+      #Portfolio:hover {
+        transform: translateY(-6px);
+      }
+      #Hobbies{
+        font-size: large;
+        background-color:#fcf6ed;
+        color:#3b507d;
+        font-weight: bold;
+        border: none;
+        border-radius: 1em;
+        padding: 0.4em 0.8em;
+        cursor: pointer;
+        display: inline-block;
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          color 0.25s ease;
         will-change: transform;
       }
 
@@ -69,15 +86,13 @@
         font-weight: bold;
         border: none;
         border-radius: 1em;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.4em 0.8em;
         cursor: pointer;
         display: inline-block;
-
         transition:
           transform 0.25s ease,
           background-color 0.25s ease,
           color 0.25s ease;
-
         will-change: transform;
       }
 
@@ -90,28 +105,33 @@
         transform: translateY(-6px);
       }
 
+      /* Top-aligned side-by-side layout */
+      .hero {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 6em 8em;
+        gap: 3em;
+      }
+
+      .text-column {
+        margin-top: 5em;
+      }
+
       .Headline {
         font-size: 5em;
         font-weight: bold;
-        display: flex;
-        position: relative;
-        top: 1.3em;
-        margin-left: 2em;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.1;
+        display: block;
         animation: easeInFromBottom 0.7s ease-in forwards;
       }
 
       #Engineer {
         font-size: 1.5em;
         font-weight: bold;
-        display: flex;
-        position: relative;
-        top: 2.5em;
-        margin-left: 6.89em;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        padding: 0.2em;
-        width: fit-content;
-        height: fit-content;
+        display: inline-block;
+        margin-top: 1.5em;
+        padding: 0.3em 0.6em;
         background-color: #3b507d;
         color: #fcf6ed;
       }
@@ -119,69 +139,116 @@
       #Subtitle {
         font-size: 1.3em;
         font-weight: bold;
-        display: grid;
-        position: relative;
-        top: 3em;
-        margin-left: 7.8em;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        padding: 0.2em;
+        display: block;
+        margin-top: 1em;
+      }
+
+      /* Photo slider on top, buttons centered underneath */
+      .media-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2em;
+      }
+
+      .slider-window {
+        width: 30em;
+        border-color: #3b507d;
+        border-radius: 10%;
+        overflow: hidden;
+      }
+
+      .slider-track {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .slider-track img {
+        width: 30em;
+        height: 30em;
+        flex-shrink: 0;
+        object-fit: cover;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 1.5em;
+      }
+
+      #Next,
+      #Previous {
+        font-size: large;
+        background-color: #3b507d;
+        color: #fcf6ed;
+        font-weight: bold;
+        border: 2px solid #3b507d;
+        border-radius: 1em;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+
+      #Next:hover,
+      #Previous:hover {
+        background-color: #fcf6ed;
+        color: #3b507d;
+        transform: translateY(-4px);
       }
     </style>
   </head>
 
   <body>
-    <div>
-      <nav class="navbar">
+    <nav class="navbar">
+      <input
+        type="button"
+        value="Portfolio"
+        id="Portfolio"
+        onclick="Home()"
+      />
+
+      <div class="nav-links">
         <input
           type="button"
-          value="Portfolio"
-          id="Portfolio"
-          onclick="Home()"
+          value="About"
+          id="About_Me"
+          onclick="AboutMe()"
         />
+        <input
+          type="button"
+          value="Achievements"
+          id="Achievements"
+          onclick="Achievements()"
+        />
+        <input
+          type="button"
+          value="Projects"
+          id="Projects"
+          onclick="Projects()"
+        />
+        <input
+          type="button"
+          value="Hobbies"
+          id="Hobbies"
+          onclick="Hobbies()"
+        />
+      </div>
+    </nav>
 
-        <div>
-          <input
-            type="button"
-            value="About"
-            id="About_Me"
-            onclick="AboutMe()"
-          />
-
-          <input
-            type="button"
-            value="Achievements"
-            id="Achievements"
-            onclick="Achievements()"
-          />
-
-          <input
-            type="button"
-            value="Projects"
-            id="Projects"
-            onclick="Projects()"
-          />
-
-          <input
-            type="button"
-            value="Hobbies"
-            id="Hobbies"
-            onclick="Hobbies()"
-          />
-        </div>
-      </nav>
-
-      <div>
+    <div class="hero">
+      <div class="text-column">
         <span class="Headline">Hello,</span>
         <span class="Headline">I'm Samuel</span>
-
-        <br /><br /><br />
-
         <span id="Engineer">Welcome to my Web Page!</span>
-
         <span id="Subtitle">
           This is a personal portfolio website to learn more about me!
         </span>
       </div>
+
     </div>
 
     <script>
@@ -190,33 +257,34 @@
       const achievements_button = document.getElementById("Achievements");
       const projects_button = document.getElementById("Projects");
 
+      hobbies_button.addEventListener("mouseenter", () => {
+        about_button.style.backgroundColor = "#3b507d";
+        about_button.style.color = "#fcf6ed";
+        console.log("Hovered");
+      });
+      hobbies_button.addEventListener("mouseleave", () => {
+        about_button.style.backgroundColor = "#fcf6ed";
+        about_button.style.color = "#3b507d";
+      });
       achievements_button.addEventListener("mouseenter", () => {
-        hobbies_button.style.backgroundColor = "#3b507d";
-        hobbies_button.style.color = "#fcf6ed";
+        about_button.style.backgroundColor = "#3b507d";
+        about_button.style.color = "#fcf6ed";
         console.log("Hovered");
       });
       achievements_button.addEventListener("mouseleave", () => {
-        hobbies_button.style.backgroundColor = "#fcf6ed";
-        hobbies_button.style.color = "#3b507d";
-      });
-      about_button.addEventListener("mouseenter", () => {
-        hobbies_button.style.backgroundColor = "#3b507d";
-        hobbies_button.style.color = "#fcf6ed";
-        console.log("Hovered");
-      });
-      about_button.addEventListener("mouseleave", () => {
-        hobbies_button.style.backgroundColor = "#fcf6ed";
-        hobbies_button.style.color = "#3b507d";
+        about_button.style.backgroundColor = "#fcf6ed";
+        about_button.style.color = "#3b507d";
       });
       projects_button.addEventListener("mouseenter", () => {
-        hobbies_button.style.backgroundColor = "#3b507d";
-        hobbies_button.style.color = "#fcf6ed";
+        about_button.style.backgroundColor = "#3b507d";
+        about_button.style.color = "#fcf6ed";
         console.log("Hovered");
       });
       projects_button.addEventListener("mouseleave", () => {
-        hobbies_button.style.backgroundColor = "#fcf6ed";
-        hobbies_button.style.color = "#3b507d";
+        about_button.style.backgroundColor = "#fcf6ed";
+        about_button.style.color = "#3b507d";
       });
+      // Navbar navigation
       function Home() {
         window.location.href = "/";
       }
@@ -227,7 +295,7 @@
         window.location.href = "/achievement";
       }
       function Hobbies() {
-        window.location.href = "/hobbies";
+        location.reload();
       }
       function Projects() {
         window.location.href = "/projects";
