@@ -18,14 +18,19 @@ app.get("/about", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "about.html"));
 });
 
-// Projects page
+// hobbies page
 app.get("/hobbies", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "hobbies.html"));
 });
 
-// Contact page
+// achievements page
 app.get("/achievement", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "achievement.html"));
+});
+
+//projects page
+app.get("/projects", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "projects.html"));
 });
 
 // Start server

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+
+    <style>
+      @keyframes easeInFromBottom {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #fcf6ed, #fcf6ed);
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #3b507d;
+        padding: 0.3em 1em;
+      }
+
+      #Portfolio {
+        font-size: xx-large;
+        font-weight: bold;
+        color: #fcf6ed;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #3b507d;
+        border: none;
+        cursor: pointer;
+      }
+      #Projects{
+        font-size: large;
+        background-color: #fcf6ed;
+        color: #3b507d;
+        font-weight: bold;
+        border: none;
+        border-radius: 1em;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        display: inline-block;
+
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          color 0.25s ease;
+
+        will-change: transform;
+      }
+      #Hobbies,
+      #About_Me,
+      #Achievements {
+        font-size: large;
+        background-color: #3b507d;
+        color: #fcf6ed;
+        font-weight: bold;
+        border: none;
+        border-radius: 1em;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        display: inline-block;
+
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease,
+          color 0.25s ease;
+
+        will-change: transform;
+      }
+
+      #About_Me:hover,
+      #Hobbies:hover,
+      #Projects:hover,
+      #Achievements:hover {
+        background-color: #fcf6ed;
+        color: #3b507d;
+        transform: translateY(-6px);
+      }
+
+      .Headline {
+        font-size: 5em;
+        font-weight: bold;
+        display: flex;
+        position: relative;
+        top: 1.3em;
+        margin-left: 2em;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        animation: easeInFromBottom 0.7s ease-in forwards;
+      }
+
+      #Engineer {
+        font-size: 1.5em;
+        font-weight: bold;
+        display: flex;
+        position: relative;
+        top: 2.5em;
+        margin-left: 6.89em;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.2em;
+        width: fit-content;
+        height: fit-content;
+        background-color: #3b507d;
+        color: #fcf6ed;
+      }
+
+      #Subtitle {
+        font-size: 1.3em;
+        font-weight: bold;
+        display: grid;
+        position: relative;
+        top: 3em;
+        margin-left: 7.8em;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.2em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <nav class="navbar">
+        <input
+          type="button"
+          value="Portfolio"
+          id="Portfolio"
+          onclick="Home()"
+        />
+
+        <div>
+          <input
+            type="button"
+            value="About"
+            id="About_Me"
+            onclick="AboutMe()"
+          />
+
+          <input
+            type="button"
+            value="Achievements"
+            id="Achievements"
+            onclick="Achievements()"
+          />
+
+          <input
+            type="button"
+            value="Projects"
+            id="Projects"
+            onclick="Projects()"
+          />
+
+          <input
+            type="button"
+            value="Hobbies"
+            id="Hobbies"
+            onclick="Hobbies()"
+          />
+        </div>
+      </nav>
+
+      <div>
+        <span class="Headline"
+          >I am currently a Year 2 student at Singapore Polytechnic, pursuing a
+          Diploma in Computer Engineering with a focus on Computer Engineering
+          and Software.
+        </span>
+        <span class="Headline">I'm Samuel</span>
+
+        <br /><br /><br />
+
+        <span id="Engineer">Welcome to my Web Page!</span>
+
+        <span id="Subtitle">
+          This is a personal portfolio website to learn more about me!
+        </span>
+      </div>
+    </div>
+
+    <script>
+      const about_button = document.getElementById("About_Me");
+      const hobbies_button = document.getElementById("Hobbies");
+      const achievements_button = document.getElementById("Achievements");
+      const projects_button = document.getElementById("Projects");
+
+      hobbies_button.addEventListener("mouseenter", () => {
+        projects_button.style.backgroundColor = "#3b507d";
+        projects_button.style.color = "#fcf6ed";
+        console.log("Hovered");
+      });
+      hobbies_button.addEventListener("mouseleave", () => {
+        projects_button.style.backgroundColor = "#fcf6ed";
+        projects_button.style.color = "#3b507d";
+      });
+      achievements_button.addEventListener("mouseenter", () => {
+        projects_button.style.backgroundColor = "#3b507d";
+        projects_button.style.color = "#fcf6ed";
+        console.log("Hovered");
+      });
+      achievements_button.addEventListener("mouseleave", () => {
+        projects_button.style.backgroundColor = "#fcf6ed";
+        projects_button.style.color = "#3b507d";
+      });
+      about_button.addEventListener("mouseenter", () => {
+        projects_button.style.backgroundColor = "#3b507d";
+        projects_button.style.color = "#fcf6ed";
+        console.log("Hovered");
+      });
+      about_button.addEventListener("mouseleave", () => {
+        projects_button.style.backgroundColor = "#fcf6ed";
+        projects_button.style.color = "#3b507d";
+      });
+      function Home() {
+        window.location.href = "/";
+      }
+      function AboutMe() {
+        window.location.href = "/about";
+      }
+      function Achievements() {
+        window.location.href = "/achievement";
+      }
+      function Hobbies() {
+        window.location.href = "/hobbies";
+      }
+      function Projects() {
+        window.location.href = "/projects";
+      }
+    </script>
+  </body>
+</html>
