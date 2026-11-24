@@ -60,10 +60,10 @@
       #Portfolio:hover {
         transform: translateY(-6px);
       }
-      #About_Me{
+      #About_Me {
         font-size: large;
-        background-color:#fcf6ed;
-        color:#3b507d;
+        background-color: #fcf6ed;
+        color: #3b507d;
         font-weight: bold;
         border: none;
         border-radius: 1em;
@@ -71,9 +71,9 @@
         cursor: pointer;
         display: inline-block;
         transition:
-          transform 0.25s ease,
-          background-color 0.25s ease,
-          color 0.25s ease;
+          transform 0.25s ease 0.1s,
+          background-color 0.25s ease 0.1s,
+          color 0.25s ease 0.1s;
         will-change: transform;
       }
 
@@ -90,9 +90,9 @@
         cursor: pointer;
         display: inline-block;
         transition:
-          transform 0.25s ease,
-          background-color 0.25s ease,
-          color 0.25s ease;
+          transform 0.25s ease 0.1s,
+          background-color 0.25s ease 0.1s,
+          color 0.25s ease 0.1s;
         will-change: transform;
       }
 
@@ -204,20 +204,21 @@
 
   <body>
     <nav class="navbar">
-      <input
-        type="button"
-        value="Portfolio"
-        id="Portfolio"
-        onclick="Home()"
+      <input 
+      type="button" 
+      value="Portfolio" 
+      id="Portfolio" 
+      onclick="Home()" 
       />
 
       <div class="nav-links">
-        <input
-          type="button"
-          value="About"
-          id="About_Me"
-          onclick="AboutMe()"
+        <input 
+        type="button" 
+        value="About" 
+        id="About_Me" 
+        onclick="AboutMe()" 
         />
+        
         <input
           type="button"
           value="Achievements"
@@ -230,11 +231,11 @@
           id="Projects"
           onclick="Projects()"
         />
-        <input
-          type="button"
-          value="Hobbies"
-          id="Hobbies"
-          onclick="Hobbies()"
+        <input 
+        type="button" 
+        value="Hobbies" 
+        id="Hobbies" 
+        onclick="Hobbies()" 
         />
       </div>
     </nav>
@@ -248,7 +249,6 @@
           This is a personal portfolio website to learn more about me!
         </span>
       </div>
-
     </div>
 
     <script>

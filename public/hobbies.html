@@ -70,10 +70,10 @@
         padding: 0.4em 0.8em;
         cursor: pointer;
         display: inline-block;
-        transition:
-          transform 0.25s ease,
-          background-color 0.25s ease,
-          color 0.25s ease;
+         transition:
+          transform 0.25s ease 0.1s,
+          background-color 0.25s ease 0.1s,
+          color 0.25s ease 0.1s;
         will-change: transform;
       }
 
@@ -89,10 +89,10 @@
         padding: 0.4em 0.8em;
         cursor: pointer;
         display: inline-block;
-        transition:
-          transform 0.25s ease,
-          background-color 0.25s ease,
-          color 0.25s ease;
+         transition:
+          transform 0.25s ease 0.1s,
+          background-color 0.25s ease 0.1s,
+          color 0.25s ease 0.1s;
         will-change: transform;
       }
 
@@ -257,32 +257,32 @@
       const achievements_button = document.getElementById("Achievements");
       const projects_button = document.getElementById("Projects");
 
-      hobbies_button.addEventListener("mouseenter", () => {
-        about_button.style.backgroundColor = "#3b507d";
-        about_button.style.color = "#fcf6ed";
+      about_button.addEventListener("mouseenter", () => {
+        hobbies_button.style.backgroundColor = "#3b507d";
+        hobbies_button.style.color = "#fcf6ed";
         console.log("Hovered");
       });
-      hobbies_button.addEventListener("mouseleave", () => {
-        about_button.style.backgroundColor = "#fcf6ed";
-        about_button.style.color = "#3b507d";
+      about_button.addEventListener("mouseleave", () => {
+        hobbies_button.style.backgroundColor = "#fcf6ed";
+        hobbies_button.style.color = "#3b507d";
       });
       achievements_button.addEventListener("mouseenter", () => {
-        about_button.style.backgroundColor = "#3b507d";
-        about_button.style.color = "#fcf6ed";
+        hobbies_button.style.backgroundColor = "#3b507d";
+        hobbies_button.style.color = "#fcf6ed";
         console.log("Hovered");
       });
       achievements_button.addEventListener("mouseleave", () => {
-        about_button.style.backgroundColor = "#fcf6ed";
-        about_button.style.color = "#3b507d";
+        hobbies_button.style.backgroundColor = "#fcf6ed";
+        hobbies_button.style.color = "#3b507d";
       });
       projects_button.addEventListener("mouseenter", () => {
-        about_button.style.backgroundColor = "#3b507d";
-        about_button.style.color = "#fcf6ed";
+        hobbies_button.style.backgroundColor = "#3b507d";
+        hobbies_button.style.color = "#fcf6ed";
         console.log("Hovered");
       });
       projects_button.addEventListener("mouseleave", () => {
-        about_button.style.backgroundColor = "#fcf6ed";
-        about_button.style.color = "#3b507d";
+        hobbies_button.style.backgroundColor = "#fcf6ed";
+        hobbies_button.style.color = "#3b507d";
       });
       // Navbar navigation
       function Home() {

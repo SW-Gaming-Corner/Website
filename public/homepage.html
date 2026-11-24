@@ -51,9 +51,9 @@
         cursor: pointer;
         display: inline-block;
         transition:
-          transform 0.25s ease,
-          background-color 0.25s ease,
-          color 0.25s ease;
+          transform 0.25s ease 0.1s,
+          background-color 0.25s ease 0.1s,
+          color 0.25s ease 0.1s;
         will-change: transform;
       }
 
@@ -75,9 +75,9 @@
         cursor: pointer;
         display: inline-block;
         transition:
-          transform 0.25s ease,
-          background-color 0.25s ease,
-          color 0.25s ease;
+          transform 0.25s ease 0.1s,
+          background-color 0.25s ease 0.1s,
+          color 0.25s ease 0.1s;
         will-change: transform;
       }
 
@@ -90,7 +90,6 @@
         transform: translateY(-6px);
       }
 
-      /* Top-aligned side-by-side layout */
       .hero {
         display: flex;
         align-items: flex-start;
@@ -102,13 +101,21 @@
       .text-column {
         margin-top: 5em;
       }
-
       .Headline {
         font-size: 5em;
         font-weight: bold;
         line-height: 1.1;
         display: block;
-        animation: easeInFromBottom 0.7s ease-in forwards;
+        opacity: 0;
+        animation: easeInFromBottom 0.7s ease forwards;
+      }
+
+      .Headline:nth-of-type(1) {
+        animation-delay: 0s;
+      }
+
+      .Headline:nth-of-type(2) {
+        animation-delay: 0.5s;
       }
 
       #Engineer {
@@ -127,8 +134,38 @@
         display: block;
         margin-top: 1em;
       }
+      .Contact {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-top: 0.8em;
+        flex-wrap: wrap;
+      }
 
-      /* Photo slider on top, buttons centered underneath */
+      .Contact img,
+      .EmailIcon {
+        width: 2em;
+        height: 2em;
+        object-fit: contain;
+        display: block;
+      }
+
+      .ContactNumber,
+      .EmailAddress {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #3b507d;
+        text-decoration: none;
+      }
+
+      .ContactNumber:hover,
+      .EmailAddress:hover {
+        text-decoration: underline;
+      }
+
+      .EmailIcon {
+        margin-left: 2em; /* space between phone number and email icon */
+      }
       .media-column {
         display: flex;
         flex-direction: column;
@@ -162,24 +199,32 @@
         gap: 1.5em;
       }
 
-      #Next,
-      #Previous {
+      #First,
+      #Second,
+      #Third,
+      #Fourth {
         font-size: large;
+        height: 0.2em;
+        width: 4em;
         background-color: #3b507d;
         color: #fcf6ed;
         font-weight: bold;
         border: 2px solid #3b507d;
         border-radius: 1.5em;
-        padding: 0.5em 1em;
+        padding: 0.2em 1em;
+        display: inline-block;
         cursor: pointer;
         transition:
           transform 0.25s ease,
           background-color 0.25s ease,
           color 0.25s ease;
+        will-change: transform;
       }
 
-      #Next:hover,
-      #Previous:hover {
+      #First:hover,
+      #Second:hover,
+      #Third:hover,
+      #Fourth:hover {
         background-color: #fcf6ed;
         color: #3b507d;
         transform: translateY(-4px);
@@ -189,38 +234,26 @@
 
   <body>
     <nav class="navbar">
-      <input
-        type="button"
-        value="Portfolio"
-        id="Portfolio"
-        onclick="Home()"
-      />
+      <input type="button" value="Portfolio" id="Portfolio" onclick="Home()" />
 
       <div class="nav-links">
-        <input
-          type="button"
-          value="About"
-          id="About_Me"
-          onclick="AboutMe()"
-        />
+        <input type="button" value="About" id="About_Me" onclick="AboutMe()" />
+
         <input
           type="button"
           value="Achievements"
           id="Achievements"
           onclick="Achievements()"
         />
+
         <input
           type="button"
           value="Projects"
           id="Projects"
           onclick="Projects()"
         />
-        <input
-          type="button"
-          value="Hobbies"
-          id="Hobbies"
-          onclick="Hobbies()"
-        />
+
+        <input type="button" value="Hobbies" id="Hobbies" onclick="Hobbies()" />
       </div>
     </nav>
 
@@ -228,16 +261,24 @@
       <div class="text-column">
         <span class="Headline">Hello,</span>
         <span class="Headline">I'm Samuel</span>
+
         <span id="Engineer">Welcome to my Web Page!</span>
+
         <span id="Subtitle">
           This is a personal portfolio website to learn more about me!
         </span>
+        <div class="Contact">
+          <img src="images/phone symbol.png" alt="Phone" />
+          <a class="ContactNumber">+65 8875 1553</a>
+
+          <img src="images/Email symbol.png" alt="Email" class="EmailIcon" />
+          <a class="EmailAddress">samuelwon5528@gmail.com</a>
+        </div>
       </div>
 
       <div class="media-column">
         <div class="slider-window">
           <div class="slider-track" id="slider-track">
-            <!-- Replace or add more <img> tags below -->
             <img src="images/portfolio pic.jpeg" alt="Samuel Won" />
             <img src="images/portfolio pic 2.jpeg" alt="Samuel Won" />
             <img src="images/portfolio pic 3.jpeg" alt="Samuel Won" />
@@ -246,46 +287,59 @@
         </div>
 
         <div class="nav-buttons">
-          <input type="button" value="<" id="Previous" onclick="Previous()" />
-          <input type="button" value=">" id="Next" onclick="Next()" />
+          <input type="button" value="" id="First" onclick="First()" />
+          <input type="button" value="" id="Second" onclick="Second()" />
+          <input type="button" value="" id="Third" onclick="Third()" />
+          <input type="button" value="" id="Fourth" onclick="Fourth()" />
         </div>
       </div>
     </div>
 
     <script>
-      // Navbar navigation
       function Home() {
         location.reload();
       }
+
       function AboutMe() {
         window.location.href = "/about";
       }
+
       function Achievements() {
         window.location.href = "/achievement";
       }
+
       function Hobbies() {
         window.location.href = "/hobbies";
       }
+
       function Projects() {
         window.location.href = "/projects";
       }
 
-      // Horizontal image slider
       const track = document.getElementById("slider-track");
-      const totalSlides = track.children.length;
       let currentIndex = 0;
 
       function updateSlide() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
       }
 
-      function Next() {
-        currentIndex = (currentIndex + 1) % totalSlides;
+      function First() {
+        currentIndex = 0;
         updateSlide();
       }
 
-      function Previous() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      function Second() {
+        currentIndex = 1;
+        updateSlide();
+      }
+
+      function Third() {
+        currentIndex = 2;
+        updateSlide();
+      }
+
+      function Fourth() {
+        currentIndex = 3;
         updateSlide();
       }
     </script>
