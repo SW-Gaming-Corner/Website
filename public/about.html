@@ -18,12 +18,20 @@
         }
       }
 
+      html,
       body {
         margin: 0;
         min-height: 100vh;
+        overflow: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         background: linear-gradient(to bottom, #fcf6ed, #fcf6ed);
-        overflow-x: hidden;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        width: 0;
+        height: 0;
       }
 
       .navbar {
@@ -120,7 +128,7 @@
 
       #AboutText {
         margin-top: 0em;
-        max-width: 40em;
+        max-width: 37em;
         font-size: 1.15em;
         line-height: 1.8;
         text-align: justify;
@@ -132,13 +140,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: -24em -50em 0em 0em;
         gap: 1.2em;
       }
 
       .slider-window {
         width: 30em;
         border-color: #3b507d;
-        border-radius: 10%;
+        border-radius: 5%;
         overflow: hidden;
       }
 
@@ -151,34 +160,46 @@
 
       .slider-track img {
         width: 30em;
-        height: 30em;
         flex-shrink: 0;
-        object-fit: cover;
+        object-fit: contain;
       }
 
       .nav-buttons {
         display: flex;
         gap: 1.5em;
       }
+      #ThirdParagraph {
+        width: 30em;
+        font-size: 1.15em;
+        line-height: 1.8;
+        text-align: justify;
+        color: #000;
+      }
 
-      #Next,
-      #Previous {
+      #First,
+      #Second,
+      #Third {
         font-size: large;
+        height: 0.2em;
+        width: 4em;
         background-color: #3b507d;
         color: #fcf6ed;
         font-weight: bold;
         border: 2px solid #3b507d;
-        border-radius: 1em;
-        padding: 0.5em 1em;
+        border-radius: 1.5em;
+        padding: 0.2em 1em;
+        display: inline-block;
         cursor: pointer;
         transition:
           transform 0.25s ease,
           background-color 0.25s ease,
           color 0.25s ease;
+        will-change: transform;
       }
 
-      #Next:hover,
-      #Previous:hover {
+      #First:hover,
+      #Second:hover,
+      #Third:hover {
         background-color: #fcf6ed;
         color: #3b507d;
         transform: translateY(-4px);
@@ -188,21 +209,11 @@
 
   <body>
     <nav class="navbar">
-      <input 
-      type="button" 
-      value="Portfolio" 
-      id="Portfolio" 
-      onclick="Home()" 
-      />
+      <input type="button" value="Portfolio" id="Portfolio" onclick="Home()" />
 
       <div class="nav-links">
-        <input 
-        type="button" 
-        value="About" 
-        id="About_Me" 
-        onclick="AboutMe()" 
-        />
-        
+        <input type="button" value="About" id="About_Me" onclick="AboutMe()" />
+
         <input
           type="button"
           value="Achievements"
@@ -215,37 +226,66 @@
           id="Projects"
           onclick="Projects()"
         />
-        <input 
-        type="button" 
-        value="Hobbies" 
-        id="Hobbies" 
-        onclick="Hobbies()" 
-        />
+        <input type="button" value="Hobbies" id="Hobbies" onclick="Hobbies()" />
       </div>
     </nav>
 
     <div class="hero">
       <div class="text-column">
         <div id="AboutText">
-            I am currently a Year 2 student at Singapore Polytechnic, pursuing a Diploma in Computer Engineering with a focus on Computer Engineering and Software.
+          I am currently a Year 2 student at Singapore Polytechnic, pursuing a
+          Diploma in Computer Engineering with a focus on Computer Engineering
+          and Software.
 
-            <br><br>
+          <br /><br />
 
-            Throughout my diploma, I have gained hands-on experience working with ESP32 microcontrollers, embedded systems, and hardware development, alongside programming in languages such as C++ and Python. I have also explored developing AI algorithms and enjoy the process of experimenting, troubleshooting, and learning through practical projects. These experiences have strengthened my problem-solving abilities, technical knowledge, and willingness to approach challenges from different perspectives.
-
-            <br><br>
-
-            Beyond my technical studies, I am also pursuing a Minor in Digital Media, where I explore the creative side of technology through video production, photography, and music production. This allows me to develop a different perspective, combining technical thinking with creativity and visual expression.
-
-            <br><br>
-
-            As a person, I value continuous improvement, collaboration, and stepping outside my comfort zone. I believe that being open to new experiences and perspectives is essential for personal and professional growth. Whether I am working on a technical project or exploring a creative interest, I approach each opportunity with enthusiasm, determination, and a willingness to learn.
-
-            <br><br>
-
-            I look forward to expanding my knowledge, developing new skills, and exploring opportunities where I can combine my interests in technology, engineering, and creativity.
-          </div>
+          Throughout my diploma, I have gained hands-on experience working with
+          ESP32 microcontrollers, embedded systems, and hardware development,
+          alongside programming in languages such as C++, Python, HTML,
+          JavaScript & CSS. I have also explored developing AI algorithms and
+          enjoy the process of experimenting, troubleshooting, and learning
+          through practical projects. These experiences have strengthened my
+          problem-solving abilities, technical knowledge, and willingness to
+          approach challenges from different perspectives.
+        </div>
       </div>
+    </div>
+    <div class="media-column">
+      <div class="slider-window">
+        <div class="slider-track" id="slider-track">
+          <img src="images/Group pic.jpeg" alt="Group pic" />
+          <img src="images/Microcontrollerpic.jpeg" alt="Microcontroller" />
+          <img src="images/Robotpic.jpeg" alt="Robot" />
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <input type="button" value="" id="First" onclick="First()" />
+        <input type="button" value="" id="Second" onclick="Second()" />
+        <input type="button" value="" id="Third" onclick="Third()" />
+      </div>
+      <div id="ThirdParagraph">
+        
+        <br />
+        Beyond my technical studies, I am also pursuing a Minor in Digital
+        Media, where I explore the creative side of technology through video
+        production, photography, and music production. This allows me to develop
+        a different perspective, combining technical thinking with creativity
+        and visual expression.
+        <br /><br />
+
+        As a person, I value continuous improvement, collaboration, and stepping
+        outside my comfort zone. I believe that being open to new experiences
+        and perspectives is essential for personal and professional growth.
+        Whether I am working on a technical project or exploring a creative
+        interest, I approach each opportunity with enthusiasm, determination,
+        and a willingness to learn.
+
+        <br /><br />
+
+        I look forward to expanding my knowledge, developing new skills, and
+        exploring opportunities where I can combine my interests in technology,
+        engineering, and creativity.
       </div>
     </div>
 
@@ -297,6 +337,27 @@
       }
       function Projects() {
         window.location.href = "/projects";
+      }
+      const track = document.getElementById("slider-track");
+      let currentIndex = 0;
+
+      function updateSlide() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      function First() {
+        currentIndex = 0;
+        updateSlide();
+      }
+
+      function Second() {
+        currentIndex = 1;
+        updateSlide();
+      }
+
+      function Third() {
+        currentIndex = 2;
+        updateSlide();
       }
     </script>
   </body>
